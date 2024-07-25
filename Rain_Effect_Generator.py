@@ -32,7 +32,7 @@ class RainEffectGenerator:
         self._lime = LIME(iterations=25, alpha=1.0)
         # self._illumination2darkness = {0: 1, 1: 0.75, 2: 0.65, 3: 0.5}
         self._illumination2darkness = {0: 1, 1: 0.95, 2: 0.85, 3: 0.8}
-        self._weather2visibility = (1000, 2000)
+        self._weather2visibility = (50, 100)
         # self._weather2visibility = {'fog': (100,250), 'rain': (1000,2000), 'snow': (500, 1000)}
         # self._illumination2fogcolor = {0: (80, 120), 1: (120, 160), 2: (160, 200), 3: (200, 240)}
         self._illumination2fogcolor = {0: (150, 180), 1: (180, 200), 2: (200, 240), 3: (200, 240)}
