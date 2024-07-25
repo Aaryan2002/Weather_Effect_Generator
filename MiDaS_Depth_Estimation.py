@@ -39,7 +39,9 @@ def getDisparityMap(model, transform, img_path):
     img = np.asarray(img)
     input_batch = transform(img)
     with torch.no_grad():
-        prediction = model(input_batch.cuda())
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        model.to(device)
+        prediction = model(input_batch.to(device))
 
         prediction = torch.nn.functional.interpolate(
             prediction.unsqueeze(1),
@@ -83,7 +85,7 @@ def main():
             disp[disp<0]=0
             disp = disp + 1e-3
             depth = baseline*focal/(disp*img_scale)
-            np.save(save_folder / imgP.stem, depth)
+            np.save(save_folder / imgp.stem, depth)
             
 
 if __name__=='__main__':
