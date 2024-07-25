@@ -120,7 +120,7 @@ def main():
             image_files = [clearP / f for f in files]
         else:
             image_files = sorted(Path(clearP).glob("*"))
-        depth_files = [Path(depthP) / ("-".join(imgf.name.split('-')[:2])+".npy") for imgf in image_files]
+        depth_files = [Path(depthP) / (imgf.stem +".npy") for imgf in image_files]
         
         valid_files = [idx for idx, f in enumerate(depth_files) if f.exists()]
         image_files = [image_files[idx] for idx in valid_files] 
